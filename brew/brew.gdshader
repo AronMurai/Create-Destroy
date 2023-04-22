@@ -2,7 +2,6 @@ shader_type spatial;
 
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
 
-uniform vec3 albedo: source_color;
 uniform float metallic : hint_range(0.0, 1.0) = 0;
 uniform float roughness : hint_range(0.0, 1.0) = 0.02;
 
@@ -19,6 +18,7 @@ uniform float edge_scale = 0.01;
 uniform float near = 1.0;
 uniform float far = 100.0;
 uniform vec3 edge_color : source_color;
+uniform vec3 main_color : source_color;
 
 float edge(float depth)
 {
@@ -32,14 +32,14 @@ void fragment()
 	vec2 time2 = (TIME * wave_direction2) * time_scale;
 	
 	vec3 normal_blend = mix(texture(texture_normal, world_position.xz + time).rgb, texture(texture_normal2, world_position.xz + time2).rgb, 0.5);
-//
-//	float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
-//	float z_position = edge(FRAGCOORD.z);
-//	float z_difference = z_depth - z_position;
 
-//	vec3 dolor = mix(edge_color, COLOR.xyz, step(edge_scale, z_difference));
+	float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
+	float z_position = edge(FRAGCOORD.z);
+	float z_difference = z_depth - z_position;
+
+	vec3 color = mix(edge_color, main_color, step(edge_scale, z_difference));
 	
-	ALBEDO = albedo;
+	ALBEDO = color;
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	NORMAL_MAP = normal_blend;

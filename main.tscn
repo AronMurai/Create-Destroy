@@ -1,40 +1,46 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6bx1asv4ebkr"]
+[gd_scene load_steps=9 format=3 uid="uid://ce3yucjvfddo2"]
 
 [ext_resource type="PackedScene" uid="uid://dg6hjoj0flgo5" path="res://pause_menu/pause_menu.tscn" id="2_puddb"]
-[ext_resource type="Shader" path="res://brew.gdshader" id="3_n3dhw"]
+[ext_resource type="Shader" path="res://brew/brew.gdshader" id="3_q6hsg"]
 [ext_resource type="PackedScene" uid="uid://d3ed0ohe1jk1n" path="res://player/player.tscn" id="4_8akdo"]
-[ext_resource type="Texture2D" uid="uid://p0u7qm2qf6vl" path="res://normal_map.tres" id="4_dokry"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_1kpsb"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_slxwo"]
-top_radius = 1.8
-height = 0.001
+[ext_resource type="Texture2D" uid="uid://p0u7qm2qf6vl" path="res://brew/normal_map.tres" id="4_cpnrs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p0jo5"]
-size = Vector2(1, 1)
+size = Vector2(0.7, 0.7)
 subdivide_width = 200
 subdivide_depth = 200
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81tai"]
 render_priority = 0
-shader = ExtResource("3_n3dhw")
-shader_parameter/albedo = Color(0.780392, 0.337255, 0.0980392, 1)
+shader = ExtResource("3_q6hsg")
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.095
 shader_parameter/wave_direction = Vector2(2, 0)
 shader_parameter/wave_direction2 = Vector2(0, 1)
-shader_parameter/time_scale = 0.035
-shader_parameter/edge_scale = 0.01
+shader_parameter/time_scale = 0.02
+shader_parameter/edge_scale = 0.5
 shader_parameter/near = 10.0
-shader_parameter/far = 100.0
+shader_parameter/far = 300.0
 shader_parameter/edge_color = Color(1, 1, 1, 1)
-shader_parameter/texture_normal = ExtResource("4_dokry")
-shader_parameter/texture_normal2 = ExtResource("4_dokry")
+shader_parameter/main_color = Color(0.65098, 0.192157, 0.0352941, 1)
+shader_parameter/texture_normal = ExtResource("4_cpnrs")
+shader_parameter/texture_normal2 = ExtResource("4_cpnrs")
 
-[node name="World" type="Node"]
+[sub_resource type="BoxMesh" id="BoxMesh_1bsm1"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0tqly"]
+radius = 0.1
+height = 0.2
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("4_8akdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54117, 2.98429)
 
 [node name="Map" type="Node3D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Bowl" type="CSGCombiner3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42859, 0)
@@ -87,28 +93,48 @@ size = Vector3(6, 0.675, 8)
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_puddb")]
 
-[node name="Brew" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.65402, 2.23676, -4)
-visible = false
-mesh = SubResource("SphereMesh_1kpsb")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76613, 0)
-visible = false
-mesh = SubResource("CylinderMesh_slxwo")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.41559, 0)
-visible = false
-omni_range = 400.0
-omni_attenuation = 1e-05
-
-[node name="Brew2" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.312251, 1.69596, -0.724619)
-mesh = SubResource("PlaneMesh_p0jo5")
-surface_material_override/0 = SubResource("ShaderMaterial_81tai")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.00198966, 0.999998, 0, -0.999998, -0.00198966, -1.59077, 10.8009, 0.564106)
 
-[node name="Player" parent="." instance=ExtResource("4_8akdo")]
+[node name="Brew" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.57023, 0)
+mesh = SubResource("PlaneMesh_p0jo5")
+surface_material_override/0 = SubResource("ShaderMaterial_81tai")
+
+[node name="Condiments" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57443, 1.1466)
+mesh = SubResource("BoxMesh_1bsm1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.887236, 1.61491, 0.816357)
+mesh = SubResource("SphereMesh_0tqly")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.966898, 1.58706, -0.338843)
+mesh = SubResource("BoxMesh_1bsm1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201722, 1.60981, -1.02574)
+mesh = SubResource("BoxMesh_1bsm1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.559304, 1.60637, -0.67886)
+mesh = SubResource("SphereMesh_0tqly")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16869, 1.62243, 0.170108)
+mesh = SubResource("BoxMesh_1bsm1")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(0.999087, 0.0427301, 0, -0.0427301, 0.999087, 0, 0, 0, 1, -0.982694, 1.62499, 0.778388)
+mesh = SubResource("BoxMesh_1bsm1")
+skeleton = NodePath("../MeshInstance3D6")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Condiments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133533, 1.55418, 0.106719)
+mesh = SubResource("BoxMesh_1bsm1")
+skeleton = NodePath("../MeshInstance3D6")
