@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ed0ohe1jk1n" path="res://player/player.tscn" id="4_8akdo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p0jo5"]
-size = Vector2(0.5, 0.5)
+size = Vector2(0.8, 0.8)
 subdivide_width = 200
 subdivide_depth = 200
 
@@ -76,11 +76,13 @@ surface_material_override/0 = ExtResource("2_1o0la")
 
 [node name="Brew2" type="MeshInstance3D" parent="Map/Soup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57, 0)
+visible = false
 mesh = SubResource("PlaneMesh_2cwrg")
 surface_material_override/0 = ExtResource("2_1o0la")
 
 [node name="Brew3" type="MeshInstance3D" parent="Map/Soup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57, 0)
+visible = false
 mesh = SubResource("PlaneMesh_deu8k")
 surface_material_override/0 = ExtResource("2_1o0la")
 
