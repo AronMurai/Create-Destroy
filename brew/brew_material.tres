@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dcifansdwe06r"]
+
+[ext_resource type="Shader" path="res://brew/brew.gdshader" id="1_f1ygw"]
+[ext_resource type="Texture2D" uid="uid://p0u7qm2qf6vl" path="res://brew/normal_map.tres" id="2_l1021"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_f1ygw")
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.095
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.02
+shader_parameter/edge_scale = 0.5
+shader_parameter/near = 10.0
+shader_parameter/far = 300.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/main_color = Color(0.65098, 0.192157, 0.0352941, 1)
+shader_parameter/texture_normal = ExtResource("2_l1021")
+shader_parameter/texture_normal2 = ExtResource("2_l1021")

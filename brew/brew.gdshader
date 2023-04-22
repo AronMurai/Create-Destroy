@@ -26,6 +26,7 @@ float edge(float depth)
 	return near * far / (far + depth * (near - far));
 }
 
+
 void fragment() 
 {
 	vec2 time = (TIME * wave_direction) * time_scale;
