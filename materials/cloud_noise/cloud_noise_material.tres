@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cqfw1pd0vb5i5"]
+
+[ext_resource type="Shader" path="res://materials/cloud_noise/cloud_noise.gdshader" id="1_7h2f1"]
+[ext_resource type="Texture2D" uid="uid://ol6jholf7ir4" path="res://brew/noise/cloud_noise_1.tres" id="2_583wt"]
+[ext_resource type="Texture2D" uid="uid://cfu5n4n7qp4p1" path="res://brew/noise/cloud_noise_2.tres" id="3_3eb7r"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7h2f1")
+shader_parameter/time_scale = 0.045
+shader_parameter/wave_direction_1 = Vector2(1, 2)
+shader_parameter/wave_direction_2 = Vector2(-2, 1)
+shader_parameter/cloud_noise_texture_1 = ExtResource("2_583wt")
+shader_parameter/cloud_noise_texture_2 = ExtResource("3_3eb7r")

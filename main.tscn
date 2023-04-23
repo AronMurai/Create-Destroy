@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn6md2tq0o67a"]
+[gd_scene load_steps=19 format=3 uid="uid://cm4bajah2tab"]
 
 [ext_resource type="Material" uid="uid://ccmswixu6mjwl" path="res://brew/brew.tres" id="2_cnbi1"]
 [ext_resource type="PackedScene" uid="uid://dg6hjoj0flgo5" path="res://pause_menu/pause_menu.tscn" id="2_puddb"]
@@ -7,6 +7,11 @@
 [ext_resource type="Script" path="res://condiments.gd" id="4_n2qp7"]
 [ext_resource type="PackedScene" uid="uid://buv8uf1vbqjex" path="res://chicken.tscn" id="6_bxfix"]
 [ext_resource type="PackedScene" uid="uid://c4ni7iwj46twq" path="res://mushroom.tscn" id="7_lrgxt"]
+[ext_resource type="Material" uid="uid://cbb4sayj176ot" path="res://materials/edge_fresnel/edge_fresnel_material.tres" id="8_kgbri"]
+[ext_resource type="Material" uid="uid://cqfw1pd0vb5i5" path="res://materials/cloud_noise/cloud_noise_material.tres" id="8_rphwo"]
+[ext_resource type="Material" uid="uid://b010m4l8tpahg" path="res://materials/radial_noise/radial_noise_material.tres" id="9_nibsx"]
+[ext_resource type="Material" uid="uid://dffgimjs7hr1v" path="res://materials/bump_map/bump_map_material.tres" id="11_mwq8i"]
+[ext_resource type="Material" uid="uid://cnbtbt8wrlfke" path="res://materials/distortion_material/distortion_material.tres" id="12_afoqe"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p0jo5"]
 size = Vector2(0.8, 0.8)
@@ -36,8 +41,6 @@ height = 0.05
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i748i"]
 size = Vector3(4, 2, 4.16601)
-
-[sub_resource type="SphereMesh" id="SphereMesh_bng53"]
 
 [node name="Main" type="Node"]
 
@@ -145,12 +148,12 @@ radius = 2.0
 [node name="Geometry" type="CSGCombiner3D" parent="Map"]
 use_collision = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6176, 1, 0)
-size = Vector3(1, 1, 8)
-
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry"]
 size = Vector3(18, 1, 16)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
+size = Vector3(1, 1, 10)
 
 [node name="Scaffolding" type="CSGCombiner3D" parent="Map"]
 use_collision = true
@@ -185,7 +188,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8919, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.942264, 0)
 shape = SubResource("BoxShape3D_i748i")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59579, 1.5078, 0)
-mesh = SubResource("SphereMesh_bng53")
-material = ExtResource("2_cnbi1")
+[node name="EdgeFresnel" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 0)
+material = ExtResource("8_kgbri")
+
+[node name="CloudNoise" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -2)
+material = ExtResource("8_rphwo")
+
+[node name="RadialNoise" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 2)
+material = ExtResource("9_nibsx")
+
+[node name="BumpMap" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -4)
+material = ExtResource("11_mwq8i")
+
+[node name="DistortionNoise" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 4)
+material = ExtResource("12_afoqe")

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b010m4l8tpahg"]
+
+[ext_resource type="Shader" path="res://materials/radial_noise/radial_noise.gdshader" id="1_opnr2"]
+[ext_resource type="Texture2D" uid="uid://o61i8csv420j" path="res://brew/noise/radial_noise.png" id="2_hj7l4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_opnr2")
+shader_parameter/rotate_time_scale = 0.3
+shader_parameter/radial_noise_texture = ExtResource("2_hj7l4")

@@ -2,6 +2,7 @@ shader_type spatial;
 render_mode unshaded;
 
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
+
 uniform sampler2D cloud_noise_texture_1;
 uniform sampler2D cloud_noise_texture_2;
 uniform sampler2D radial_noise_texture;
@@ -37,7 +38,7 @@ float edge(float depth)
 	return near * far / (far + depth * (near - far));
 }
 
-
+// https://godotengine.org/qa/41400/simple-texture-rotation-shader
 vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
 	float cosa = cos(rotation);
 	float sina = sin(rotation);
