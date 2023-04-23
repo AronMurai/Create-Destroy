@@ -9,13 +9,14 @@
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d0ja0"]
 seamless = true
+seamless_blend_skirt = 0.001
 noise = SubResource("FastNoiseLite_8ajfi")
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_ah7sh")
 shader_parameter/main_color = Color(0.866667, 0.34902, 0, 1)
-shader_parameter/fresnel_color = Color(0.976471, 0.690196, 0.690196, 1)
+shader_parameter/fresnel_color = Color(1, 1, 1, 1)
 shader_parameter/rotate_time_scale = 0.3
 shader_parameter/time_scale = 0.1
 shader_parameter/distortion_time_scale = 0.3

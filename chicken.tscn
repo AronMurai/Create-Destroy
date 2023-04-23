@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://buv8uf1vbqjex"]
+
+[ext_resource type="Material" uid="uid://cx8mhjnfdvnrm" path="res://chicken_skin.tres" id="1_06f6q"]
+
+[node name="Chicken" type="CSGCombiner3D"]
+transform = Transform3D(1.06247, 0.557811, 7.68491e-08, 0.40862, -0.778307, -0.816865, -0.379713, 0.723247, -0.879052, -1.00505, 2.28359, -1.51161)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
+radius = 0.15
+height = 0.5
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, -2.68221e-07, -5.96046e-08, 7.45058e-08, 1, -5.96046e-08, 0, 0, 1, -0.0139808, 1.15563, -0.0323645)
+radius = 0.6
+material = ExtResource("1_06f6q")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(0.999999, -4.76837e-07, -1.93715e-07, 5.21541e-07, 1, -2.08616e-07, -1.49012e-08, 0, 1, 0.0114059, 0.55004, 0.0818956)
+operation = 2
+inner_radius = 0.15
+outer_radius = 0.5
+material = ExtResource("1_06f6q")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn6md2tq0o67a"]
+[gd_scene load_steps=15 format=3 uid="uid://bn6md2tq0o67a"]
 
 [ext_resource type="Material" uid="uid://ccmswixu6mjwl" path="res://brew/brew.tres" id="2_cnbi1"]
 [ext_resource type="PackedScene" uid="uid://dg6hjoj0flgo5" path="res://pause_menu/pause_menu.tscn" id="2_puddb"]
 [ext_resource type="PackedScene" uid="uid://d3ed0ohe1jk1n" path="res://player/player.tscn" id="4_8akdo"]
 [ext_resource type="Script" path="res://brew/ingredient.gd" id="4_gkbe7"]
 [ext_resource type="Script" path="res://condiments.gd" id="4_n2qp7"]
+[ext_resource type="PackedScene" uid="uid://buv8uf1vbqjex" path="res://chicken.tscn" id="6_bxfix"]
+[ext_resource type="PackedScene" uid="uid://c4ni7iwj46twq" path="res://mushroom.tscn" id="7_lrgxt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p0jo5"]
 size = Vector2(0.8, 0.8)
@@ -34,6 +36,8 @@ height = 0.05
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i748i"]
 size = Vector3(4, 2, 4.16601)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bng53"]
 
 [node name="Main" type="Node"]
 
@@ -79,29 +83,31 @@ surface_material_override/0 = ExtResource("2_cnbi1")
 script = ExtResource("4_n2qp7")
 
 [node name="Ingredient1" type="MeshInstance3D" parent="Map/Soup/Condiments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57443, 1.1466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.575839, 1.57443, 1.1466)
 mesh = SubResource("BoxMesh_1bsm1")
 skeleton = NodePath("../../../..")
 script = ExtResource("4_gkbe7")
 
 [node name="Ingredient3" type="MeshInstance3D" parent="Map/Soup/Condiments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.966898, 1.58706, 0.433364)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.336659, 1.57514, 0.938091)
 mesh = SubResource("BoxMesh_1bsm1")
 script = ExtResource("4_gkbe7")
 
 [node name="Ingredient4" type="MeshInstance3D" parent="Map/Soup/Condiments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201722, 1.60981, -1.02574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.295885, 1.53043, 1.33692)
 mesh = SubResource("BoxMesh_1bsm1")
 skeleton = NodePath("../../../..")
 script = ExtResource("4_gkbe7")
 
 [node name="Ingredient6" type="MeshInstance3D" parent="Map/Soup/Condiments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16869, 1.62243, 0.170108)
+visible = false
 mesh = SubResource("BoxMesh_1bsm1")
 script = ExtResource("4_gkbe7")
 
 [node name="Ingredient7" type="MeshInstance3D" parent="Map/Soup/Condiments"]
 transform = Transform3D(0.999087, 0.0427301, 0, -0.0427301, 0.999087, 0, 0, 0, 1, -0.745051, 1.62499, -1.15759)
+visible = false
 mesh = SubResource("BoxMesh_1bsm1")
 skeleton = NodePath("../Ingredient6")
 script = ExtResource("4_gkbe7")
@@ -109,9 +115,18 @@ metadata/_edit_group_ = true
 
 [node name="Ingredient8" type="MeshInstance3D" parent="Map/Soup/Condiments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133533, 1.55418, 0.106719)
+visible = false
 mesh = SubResource("BoxMesh_1bsm1")
 skeleton = NodePath("../Ingredient6")
 script = ExtResource("4_gkbe7")
+
+[node name="Chicken" parent="Map/Soup/Condiments" instance=ExtResource("6_bxfix")]
+
+[node name="Mushroom" parent="Map/Soup/Condiments" instance=ExtResource("7_lrgxt")]
+transform = Transform3D(0.157859, 0.367533, 0, -0.367533, 0.157859, 0, 0, 0, 0.4, 0.063378, 1.85372, 0.335401)
+
+[node name="Mushroom2" parent="Map/Soup/Condiments" instance=ExtResource("7_lrgxt")]
+transform = Transform3D(-0.0597534, -0.260897, 0.297258, -0.389904, 0.0893001, 0, -0.0663629, -0.289755, -0.267652, 1.54275, 1.88014, 0.475992)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Map/Soup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.352467, 0)
@@ -169,3 +184,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8919, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.942264, 0)
 shape = SubResource("BoxShape3D_i748i")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59579, 1.5078, 0)
+mesh = SubResource("SphereMesh_bng53")
+material = ExtResource("2_cnbi1")
