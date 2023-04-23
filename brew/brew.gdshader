@@ -7,6 +7,7 @@ uniform sampler2D cloud_noise_texture_1;
 uniform sampler2D cloud_noise_texture_2;
 uniform sampler2D radial_noise_texture;
 uniform sampler2D bump_map_texture;
+uniform sampler2D distortion_map_texture;
 
 varying float height;
 varying vec3 world_position;
@@ -61,7 +62,7 @@ void fragment()
 	vec2 time_2 = (TIME * wave_direction_2) * time_scale;
 	
 	// Distort texture
-	vec2 distortion = texture(bump_map_texture, UV - TIME / 8.0).rg;
+	vec2 distortion = texture(distortion_map_texture, UV - TIME / 8.0).rg;
 	// Center displacement
 	distortion = ((distortion * 2.0) - 1.0) * distortion_strength;
 	
@@ -97,10 +98,4 @@ void vertex()
 	height = texture(bump_map_texture, world_position.xz / noise_scale * TIME * time_scale).r;
 	VERTEX.y += height * wave_height_scale;
 }
-
-float rand(vec2 co)
-{
-	return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
-}
-
 

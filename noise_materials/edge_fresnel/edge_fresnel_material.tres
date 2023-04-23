@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cbb4sayj176ot"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
 
-[ext_resource type="Shader" path="res://materials/edge_fresnel/edge_fresnel.gdshader" id="1_pi4ia"]
+[ext_resource type="Shader" path="res://noise_materials/edge_fresnel/edge_fresnel.gdshader" id="1_pi4ia"]
 
 [resource]
 render_priority = 0

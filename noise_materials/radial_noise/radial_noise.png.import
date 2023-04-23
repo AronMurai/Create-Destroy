@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o61i8csv420j"
-path.s3tc="res://.godot/imported/radial_noise.png-dceadbf005dbbfbaa96edae6f458e0be.s3tc.ctex"
+path.s3tc="res://.godot/imported/radial_noise.png-a4060962959e2f3abe3bbaa1fda6ad3c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://brew/noise/radial_noise.png"
-dest_files=["res://.godot/imported/radial_noise.png-dceadbf005dbbfbaa96edae6f458e0be.s3tc.ctex"]
+source_file="res://noise_materials/radial_noise/radial_noise.png"
+dest_files=["res://.godot/imported/radial_noise.png-a4060962959e2f3abe3bbaa1fda6ad3c.s3tc.ctex"]
 
 [params]
 

@@ -1,10 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ccmswixu6mjwl"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3]
 
 [ext_resource type="Shader" path="res://brew/brew.gdshader" id="1_ah7sh"]
-[ext_resource type="Texture2D" uid="uid://c5yjgwnbgbox3" path="res://brew/noise/bump_map_texture.tres" id="2_3tls8"]
-[ext_resource type="Texture2D" uid="uid://ol6jholf7ir4" path="res://brew/noise/cloud_noise_1.tres" id="2_12t7x"]
-[ext_resource type="Texture2D" uid="uid://cfu5n4n7qp4p1" path="res://brew/noise/cloud_noise_2.tres" id="3_fhldv"]
-[ext_resource type="Texture2D" uid="uid://o61i8csv420j" path="res://brew/noise/radial_noise.png" id="4_of16k"]
+[ext_resource type="Texture2D" uid="uid://c5yjgwnbgbox3" path="res://noise_materials/bump_map/bump_map_texture.tres" id="2_8d6in"]
+[ext_resource type="Texture2D" uid="uid://ol6jholf7ir4" path="res://noise_materials/cloud_noise/cloud_noise_1.tres" id="3_5tsi6"]
+[ext_resource type="Texture2D" uid="uid://cfu5n4n7qp4p1" path="res://noise_materials/cloud_noise/cloud_noise_2.tres" id="4_5yyhx"]
+[ext_resource type="Texture2D" uid="uid://o61i8csv420j" path="res://noise_materials/radial_noise/radial_noise.png" id="5_8ondy"]
+[ext_resource type="Texture2D" uid="uid://cisr7sckexwp4" path="res://noise_materials/distortion_material/distortion_noise.tres" id="5_cydlh"]
 
 [resource]
 render_priority = 0
@@ -23,7 +24,8 @@ shader_parameter/distortion_strength = 0.1
 shader_parameter/wave_direction_1 = Vector2(1, 2)
 shader_parameter/wave_direction_2 = Vector2(1, -2)
 shader_parameter/edge_color = Color(1, 1, 1, 1)
-shader_parameter/cloud_noise_texture_1 = ExtResource("2_12t7x")
-shader_parameter/cloud_noise_texture_2 = ExtResource("3_fhldv")
-shader_parameter/radial_noise_texture = ExtResource("4_of16k")
-shader_parameter/bump_map_texture = ExtResource("2_3tls8")
+shader_parameter/cloud_noise_texture_1 = ExtResource("3_5tsi6")
+shader_parameter/cloud_noise_texture_2 = ExtResource("4_5yyhx")
+shader_parameter/radial_noise_texture = ExtResource("5_8ondy")
+shader_parameter/bump_map_texture = ExtResource("2_8d6in")
+shader_parameter/distortion_map_texture = ExtResource("5_cydlh")

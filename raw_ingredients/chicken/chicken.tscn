@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://buv8uf1vbqjex"]
+[gd_scene load_steps=2 format=3 uid="uid://chmdlfxq3y83w"]
 
-[ext_resource type="Material" uid="uid://cx8mhjnfdvnrm" path="res://chicken_skin.tres" id="1_06f6q"]
+[ext_resource type="Material" uid="uid://cx8mhjnfdvnrm" path="res://raw_ingredients/chicken/chicken_skin.tres" id="1_06f6q"]
 
 [node name="Chicken" type="CSGCombiner3D"]
-transform = Transform3D(1.06247, 0.557811, 7.68491e-08, 0.40862, -0.778307, -0.816865, -0.379713, 0.723247, -0.879052, -1.00505, 2.28359, -1.51161)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
