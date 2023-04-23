@@ -7,9 +7,6 @@ uniform float metallic : hint_range(0.0, 1.0) = 0;
 uniform float roughness : hint_range(0.0, 1.0) = 0.02;
 
 uniform sampler2D noise_texture;
-
-uniform vec4 dark_color : source_color;
-uniform vec4 light_color : source_color;
 uniform float time_scale : hint_range(0.0, 0.2, 0.005) = 0.01;
 
 varying float height;
@@ -39,7 +36,7 @@ void fragment()
 	noise1 = round(noise1 * 4.0) / 4.0;
 	float noise2 = texture(noise_texture, UV / 2.0 - TIME * time_scale).y;
 	noise2 = round(noise2 * 4.0) / 4.0;
-	float noise = (noise1 + noise2) / 2.0;
+	float noise = (noise1 + noise2) / 4.0;
 	
 	float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
 	float z_position = edge(FRAGCOORD.z);

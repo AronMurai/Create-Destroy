@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbefwcalcvf1d"]
+[gd_scene load_steps=12 format=3 uid="uid://bv5iyqrx1uj2p"]
 
-[ext_resource type="Material" uid="uid://dcifansdwe06r" path="res://brew/brew_material.tres" id="2_1o0la"]
 [ext_resource type="PackedScene" uid="uid://dg6hjoj0flgo5" path="res://pause_menu/pause_menu.tscn" id="2_puddb"]
+[ext_resource type="Material" uid="uid://dcifansdwe06r" path="res://brew/gross_brew.tres" id="2_sgwr3"]
 [ext_resource type="PackedScene" uid="uid://d3ed0ohe1jk1n" path="res://player/player.tscn" id="4_8akdo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p0jo5"]
@@ -58,6 +58,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42859, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.786322, 0)
 radius = 2.0
 
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Soup/Bowl"]
+size = Vector3(4.18865, 1, 4.14408)
+
 [node name="In" type="CSGSphere3D" parent="Map/Soup/Bowl"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685149, 0)
 operation = 2
@@ -69,22 +72,22 @@ operation = 2
 size = Vector3(4, 3, 4)
 
 [node name="Brew" type="MeshInstance3D" parent="Map/Soup"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.57023, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.00786567, 1.57023, -0.00284672)
 mesh = SubResource("PlaneMesh_p0jo5")
 skeleton = NodePath("../../..")
-surface_material_override/0 = ExtResource("2_1o0la")
+surface_material_override/0 = ExtResource("2_sgwr3")
 
 [node name="Brew2" type="MeshInstance3D" parent="Map/Soup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57, 0)
 visible = false
 mesh = SubResource("PlaneMesh_2cwrg")
-surface_material_override/0 = ExtResource("2_1o0la")
+surface_material_override/0 = ExtResource("2_sgwr3")
 
 [node name="Brew3" type="MeshInstance3D" parent="Map/Soup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57, 0)
 visible = false
 mesh = SubResource("PlaneMesh_deu8k")
-surface_material_override/0 = ExtResource("2_1o0la")
+surface_material_override/0 = ExtResource("2_sgwr3")
 
 [node name="Condiments" type="Node3D" parent="Map/Soup"]
 
@@ -126,7 +129,6 @@ skeleton = NodePath("../MeshInstance3D6")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Map/Soup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03622, 0)
-emitting = false
 amount = 100
 lifetime = 1.25
 collision_base_size = 0.0
@@ -174,3 +176,4 @@ size = Vector3(6, 0.675, 8)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.00198966, 0.999998, 0, -0.999998, -0.00198966, -1.59077, 10.8009, 0.564106)
+light_energy = 2.0
