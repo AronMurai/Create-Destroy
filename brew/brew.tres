@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://ccmswixu6mjwl"]
+
+[ext_resource type="Shader" path="res://brew/brew.gdshader" id="1_ah7sh"]
+[ext_resource type="Texture2D" uid="uid://ol6jholf7ir4" path="res://brew/noise/cloud_noise_1.tres" id="2_12t7x"]
+[ext_resource type="Texture2D" uid="uid://cfu5n4n7qp4p1" path="res://brew/noise/cloud_noise_2.tres" id="3_fhldv"]
+[ext_resource type="Texture2D" uid="uid://o61i8csv420j" path="res://brew/noise/radial_noise.png" id="4_of16k"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8ajfi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d0ja0"]
+seamless = true
+noise = SubResource("FastNoiseLite_8ajfi")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ah7sh")
+shader_parameter/main_color = Color(0.866667, 0.34902, 0, 1)
+shader_parameter/fresnel_color = Color(0.976471, 0.690196, 0.690196, 1)
+shader_parameter/rotate_time_scale = 0.3
+shader_parameter/time_scale = 0.1
+shader_parameter/distortion_time_scale = 0.3
+shader_parameter/wave_height_scale = 0.009
+shader_parameter/edge_scale = 2.0
+shader_parameter/near = 10.0
+shader_parameter/far = 300.0
+shader_parameter/noise_scale = 0.09
+shader_parameter/distortion_strength = 0.1
+shader_parameter/wave_direction_1 = Vector2(1, 2)
+shader_parameter/wave_direction_2 = Vector2(1, -2)
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/cloud_noise_texture_1 = ExtResource("2_12t7x")
+shader_parameter/cloud_noise_texture_2 = ExtResource("3_fhldv")
+shader_parameter/radial_noise_texture = ExtResource("4_of16k")
+shader_parameter/bump_map_texture = SubResource("NoiseTexture2D_d0ja0")
